@@ -1,17 +1,25 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#if 0
 static int compare_func(const void *x, const void *y)
 {
 	int a = *(int *)x;
 	int b = *(int *)y;
 
 	if (a < b)
-		return 1;
-	if (a > b)
 		return -1;
+	if (a > b)
+		return 1;
 	return 0;
 }
+#else
+static int compare_func(const void *x, const void *y)
+{
+	/* return (*(int *)y - *(int *)x) for max to min */
+	return (*(int *)x - *(int *)y);
+}
+#endif
 
 int main (void)
 {
